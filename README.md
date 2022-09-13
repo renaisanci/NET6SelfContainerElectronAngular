@@ -1,2 +1,2 @@
 # NET6SelfContainerElectronAngular
-NET 6 Core Angular and Electron Node separate Projects
+NET 6 Core WebAPI, Angular and ElectronJS separate Projects
