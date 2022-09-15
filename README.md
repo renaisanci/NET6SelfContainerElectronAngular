@@ -3,4 +3,4 @@ NET 6 Core WebAPI, Angular and ElectronJS separate Projects
 
 
 
-![image](https://user-images.githubusercontent.com/14084041/189997002-cf912db3-7775-43e0-b8d5-0e224595ab2f.png)
+![image](https://user-images.githubusercontent.com/14084041/190498196-436db7f1-f2c7-4782-ad1a-129ca1a37369.png)
