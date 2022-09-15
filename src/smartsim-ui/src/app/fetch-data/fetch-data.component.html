@@ -1,0 +1,30 @@
+<h1 id="tableLabel">Host Interface Test Tool</h1>
+
+<p>Select the system protocol</p>
+
+<p *ngIf="!forecasts"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts">
+  <thead>
+    <tr>
+      <th>N.</th>
+      <th>Instrument/System</th>
+      <th>ASTM-Sim</th>
+      <th>HL7-Sim</th>
+      <th>Cobas-Sim</th>
+      <th>POCT1-A</th>
+      <th>WinMonitor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let forecast of forecasts">
+      <td>{{ forecast.number }}</td>
+      <td>{{ forecast.instrument }}</td>
+      <td>{{ forecast.astm }}</td>
+      <td>{{ forecast.hl7 }}</td>
+      <td>{{ forecast.cobas }}</td>
+      <td>{{ forecast.poct1 }}</td>
+      <td>{{ forecast.winMonitor }}</td>
+    </tr>
+  </tbody>
+</table>
