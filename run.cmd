@@ -7,12 +7,13 @@ dotnet restore
 dotnet build
 dotnet publish -r win10-x64 --self-contained --output ../../dist/SmartSim.API
 
-:: in case the angular project has not been built yet
-npm install
+
 
 :: publish angular project
 cd ../smartsim-ui
-:: npm install
+
+:: in case the angular project has not been built yet
+npm install
 
 cmd /c ng build --base-href ./
 
