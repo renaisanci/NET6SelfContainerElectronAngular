@@ -1,8 +1,11 @@
 const {
     app,
     BrowserWindow,
-    Menu
+    Menu,
+    ipcMain  //The ipcMain module is an Event Emitter. When used in the main process, it handles asynchronous and synchronous messages sent from a renderer process
 } = require('electron');
+
+const { autoUpdater } = require('electron-updater');
 
 const path = require('path');
 const url = require('url');
@@ -45,7 +48,8 @@ function createMainWindow() {
         width: 1000,
         height: 800,
         frame: true,
-        resizable: true
+        resizable: true,
+        icon: __dirname + '/assets/icon.png'
     });
 
     mainWindow.loadURL('http://localhost:5000/index.html');
@@ -92,13 +96,17 @@ function createMainWindow() {
     const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
     // Insert menu
     Menu.setApplicationMenu(mainMenu);
+
+    mainWindow.once('ready-to-show', () => {
+        autoUpdater.checkForUpdatesAndNotify();
+    });
 }
 
 
 function startNetCoreApi() {
     var spawn = require('child_process').spawn;
 
-    var wokingDirectory = path.join(__dirname, './../dist/SmartSim.API');
+    var wokingDirectory = path.join(__dirname, '../../dist/SmartSim.API');
 
     if (process.env.NODE_ENV === 'production') {
         wokingDirectory = path.join(__dirname, 'resources/dist/SmartSim.API');
@@ -123,4 +131,25 @@ function startNetCoreApi() {
             createMainWindow();
         }
     });
+
+    //Reads the app version specified in package.json and sends it to the main window
+    ipcMain.on('app_version', (event) => {
+        event.sender.send('app_version', { version: app.getVersion() });
+    });
 };
+
+//When a new update is available we’ll send a message to the 
+//main window, notifying the user of the update
+//event listeners to handle update events
+autoUpdater.on('update-available', () => {
+    mainWindow.webContents.send('update_available');
+});
+
+//event listeners to handle update events
+autoUpdater.on('update-downloaded', () => {
+    mainWindow.webContents.send('update_downloaded');
+});
+//event listener that will install the new version if the user selects “Restart”
+ipcMain.on('restart_app', () => {
+    autoUpdater.quitAndInstall();
+});

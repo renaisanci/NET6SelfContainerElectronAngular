@@ -4,13 +4,16 @@
   "private": true,
   "description": "NetCore + React + ElectronJS",
   "author": "Renato Fonseca - ROCHE",
-  "repository": "",
+  "repository": {
+    "owner": "renaisanci",
+    "type" : "git",
+    "url" : "https://github.com/renaisanci/NET6SelfContainerElectronAngular.git"
+  },
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "build",
-    "electron": "electron .",
-    "electron-build": "ng build --prod && electron ."
+    "build": "electron-builder build --win --publish never",
+    "deploy": "electron-builder build --win --publish always"
   },
   "devDependencies": {
     "electron": "^20.1.4",
@@ -38,5 +41,8 @@
         "nsis"
       ]
     }
+  },
+  "dependencies": {
+    "electron-updater": "^5.2.1"
   }
 }

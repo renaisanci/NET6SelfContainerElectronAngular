@@ -1,0 +1,4 @@
+appId: smartSim.Poc
+publish:
+  provider: github
+  token: [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]
