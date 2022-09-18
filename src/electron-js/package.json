@@ -1,6 +1,6 @@
 {
   "name": "smartsim",
-  "version": "2.5.9",
+  "version": "2.6.9",
   "private": true,
   "description": "Net6Core + Angular + ElectronJS",
   "author": "Renato Fonseca - ROCHE",
@@ -11,7 +11,7 @@
   },
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "set NODE_ENV=dev&& electron .",
     
     "build": "electron-builder build --win --publish never",
     "deploy": "electron-builder build --win --publish always"

@@ -108,16 +108,10 @@ function createMainWindow() {
 function startNetCoreApi() {
     var spawn = require('child_process').spawn;
 
-    //this way to install
-    //var wokingDirectory = path.join(__dirname, '/../dist/SmartSim.API');
-
-    //this way to test local
-    var wokingDirectory = path.join(__dirname, '/../dist/SmartSim.API');
-
-    console.log(wokingDirectory + " wokingDirectory")
-
-    if (process.env.NODE_ENV === 'production') {
-        wokingDirectory = path.join(__dirname, 'resources/dist/SmartSim.API');
+    if (process.env.NODE_ENV == 'dev') {
+        var wokingDirectory = path.join(__dirname, '../../dist/SmartSim.API');
+    }else{
+         var wokingDirectory = path.join(__dirname, '/../dist/SmartSim.API');
     }
 
     var apiPath = path.join(wokingDirectory, '/SmartSim.API.exe');
