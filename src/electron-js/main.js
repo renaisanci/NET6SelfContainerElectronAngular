@@ -52,6 +52,8 @@ function createMainWindow() {
         icon: __dirname + '/assets/icon.png'
     });
 
+    mainWindow.maximize();
+
     mainWindow.loadURL('http://localhost:5000/index.html');
     // Quit app when closed
     mainWindow.on('close', function (e) {
@@ -106,7 +108,13 @@ function createMainWindow() {
 function startNetCoreApi() {
     var spawn = require('child_process').spawn;
 
-    var wokingDirectory = path.join(__dirname, '../../dist/SmartSim.API');
+    //this way to install
+    //var wokingDirectory = path.join(__dirname, '/../dist/SmartSim.API');
+
+    //this way to test local
+    var wokingDirectory = path.join(__dirname, '/../dist/SmartSim.API');
+
+    console.log(wokingDirectory + " wokingDirectory")
 
     if (process.env.NODE_ENV === 'production') {
         wokingDirectory = path.join(__dirname, 'resources/dist/SmartSim.API');

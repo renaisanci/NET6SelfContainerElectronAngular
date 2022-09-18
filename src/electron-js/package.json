@@ -1,8 +1,8 @@
 {
   "name": "smartsim",
-  "version": "0.1.0",
+  "version": "2.5.9",
   "private": true,
-  "description": "NetCore + React + ElectronJS",
+  "description": "Net6Core + Angular + ElectronJS",
   "author": "Renato Fonseca - ROCHE",
   "repository": {
     "owner": "renaisanci",
@@ -12,6 +12,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    
     "build": "electron-builder build --win --publish never",
     "deploy": "electron-builder build --win --publish always"
   },
@@ -34,12 +35,12 @@
       ]
     },
     "mac": {
-      "category": "Cross Platform Desktop Application with .Net Core 2 and Angular 6"
+      "category": "Cross Platform Desktop Application "
     },
     "win": {
-      "target": [
-        "nsis"
-      ]
+      "target": "nsis",
+        "icon": "assets/icon.png"
+       
     }
   },
   "dependencies": {

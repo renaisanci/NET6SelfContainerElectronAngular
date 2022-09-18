@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 20px;
+        font-family: sans-serif;
+        background-color: #eaeaea;
+        text-align: center;
+      }
+      #notification {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 200px;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
 
     <meta charset="utf-8" />
     <title>SmartSim</title>
@@ -11,7 +34,15 @@
   </head>
   <body>
     <app-root>Loading...</app-root>
-
+    <div id="notification" class="hidden">
+      <p id="message"></p>
+      <button id="close-button" onClick="closeNotification()">
+        Close
+      </button>
+      <button id="restart-button" onClick="restartApp()" class="hidden">
+        Restart
+      </button>
+    </div>
     <script>
       const { ipcRenderer } = require('electron');
       const version = document.getElementById('version');
@@ -45,5 +76,6 @@
       function restartApp() {
         ipcRenderer.send('restart_app');
       }
+    </script>
   </body>
 </html>

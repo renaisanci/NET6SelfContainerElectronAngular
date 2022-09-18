@@ -17,7 +17,7 @@ cmd /c ng build --base-href ./
 :: publish electron project
 cd ../electron-js
 ::npm install
-cmd /c npm install
+IF NOT  EXIST node_modules\NUL  npm install
 
 cmd /c npm start
 
