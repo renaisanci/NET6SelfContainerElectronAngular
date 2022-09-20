@@ -1,3 +1,5 @@
+import { IpcService } from './share/services/ipc.service';
+import { ElectronIpcService } from './share/services/electron-ipc.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -9,6 +11,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { FooterComponentComponent } from './footer-component/footer-component.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +19,9 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
-  ],
+    FetchDataComponent,
+      FooterComponentComponent
+   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
@@ -28,7 +32,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [],
+  providers: [ElectronIpcService, IpcService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
