@@ -1,6 +1,12 @@
 # NET6 Core API Self Container Using ElectronJS Angular
 NET 6 Core WebAPI, Angular and ElectronJS separate Projects
 
+Some feature has been already implemented
+
+- Auto update
+- IPC comunication send and receive msg between Angular  and Electron using Angular service injecting Electron Module 
+
+
 ## 🚀 Build, Start and Package the Application
 
 We just need to execute the CMD file to run the application and create a packeg win version
